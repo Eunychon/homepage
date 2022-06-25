@@ -6,6 +6,7 @@ function onload (idx, json=0){
  idx -= 1 ;
  if (idx<=0) return 0;
  let initial=param[0]+idx;
+ if(json!=0) initial=json[0]['name'].slice(0,-1)+idx;
  let url_tail=initial+'/'+initial+'-thumb1.gif';
  let img = new Image();
  img.src = url+'/'+url_tail;
