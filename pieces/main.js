@@ -5,9 +5,22 @@ let div = document.getElementById('pieces')
 function onload(idx, len, json=0){
  idx += 1 ;
  if(idx>len) return;
+
  let zero = '00' + idx ;
  let url_tail=param.slice(param. lastIndexOf('/')+1)+'-'+zero.slice(-2);
- let img = new Image();
+ let format3=json[idx-1].name.slice(-4);
+ let img=0;
+ if (format3=='html') {
+  img=document.createElement('div');
+  loadDoc(img,url+'/'+url_tail+'.html');
+  let ihtml=img.firstChild;
+  let ratio=ihtml.height/ihtml.width;
+  ihtml.width='100%';ihtml.height='100%';
+  let w_pctg=100-1*div.style.paddingLeft.slice(0,-1)*2;
+  img.style.height=w_pctg*ratio+'vw';
+ } else {
+  img = new Image();
+ }
  //img.onload = function()
  {
   img.style.width="100%";
@@ -15,7 +28,7 @@ function onload(idx, len, json=0){
   div.appendChild(img);
   onload(idx,len, json);
  };
- img.src = url+'/'+url_tail+json[0].name.slice(-4);//'.jpg';
+ img.src = url+'/'+url_tail+format3;//'.jpg';
 }
 //onload(0);
 
