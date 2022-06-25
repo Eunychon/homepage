@@ -37,7 +37,37 @@ function new_img(url, cnt){
  div.style.heiht="100%";
  div.style.float="left";
  logo_box.appendChild(div);
+
+
+let img2=new Image();
+img2.style=img.getAttribute('style');
+img2.style.visibility='hidden';
+img2.src=img.getAttribute('src').replace('thumb1','thumb2');
+
+img.appendChild(img2);
+img.addEventListener("mouseenter", function( event ) {mouseenter(event.target);}, false);
+img2.addEventListener("mouseleave", function( event ) {mouseenter(event.target);}, false);
+img.addEventListener("click", function( event ){ mouseclick(event.target);}, false);
+img2.addEventListener("click", function( event ){ mouseclick(event.target);}, false);
+
 }
+
+
+function mouseenter(eold){
+ //let eold=event.target;
+ let enew=eold.firstChild;
+ eold.style.visibility='hidden';
+ enew.style.visibility='visible';
+ eold.parentNode.replaceChild(enew, eold);
+ enew.appendChild(eold);
+}
+function mouseclick(img) {
+     let str = img.getAttribute('src');
+     let io = '/assets/';
+     let href = str.slice(str.indexOf(io),str.lastIndexOf('/'));
+     window.location.href = '{index}'+href. replace(io,'/pieces/?p=');
+}
+
 
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
