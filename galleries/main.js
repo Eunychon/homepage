@@ -1,13 +1,19 @@
 let param = new URL(window.location.href).searchParams.get('p');
 let url = '{index}/assets/' + param;
 let div = document.getElementById('pieces')
+let initial = '';//param[0]
 
 function onload (idx, json=0){
  idx -= 1 ;
  if (idx<=0) return 0;
- let initial=param[0]+idx;
- if(json!=0) initial=json[idx-1]['name'].slice(0,-1)+idx;
- let url_tail=initial+'/'+initial+'-thumb1.gif';
+ if(initial==''&&json!=0) {
+  let name=json[idx-1]['name'];
+  for(let i=0;isNaN(name[i]);i+=1){
+   initial+=name[i];
+  }
+ }
+ let init=initial+idx;
+ let url_tail=init+'/'+init+'-thumb1.gif';
  let img = new Image();
  img.src = url+'/'+url_tail;
  //img.onload = function(){img_on_load(idx,img,json)};
