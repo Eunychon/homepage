@@ -6,4 +6,4 @@ loadDoc( body, "./../header/header.html", false, function(){
 loadNewElement( body, "div", "main.html", true, function(){
  loadNewElement( body, "script", "main.js", true ) ;
 }) ;
-//loadNewElement( body, "div", "./../footer/footer.html", true ) ;
+loadNewElement( body, "div", "./../footer/footer.html", true ) ;

@@ -8,8 +8,9 @@ function onload (idx, json=0){
  let initial=param[0]+idx;
  let url_tail=initial+'/'+initial+'-thumb1.gif';
  let img = new Image();
- img.onload = function(){img_on_load(idx,img,json)};
  img.src = url+'/'+url_tail;
+ //img.onload = function(){img_on_load(idx,img,json)};
+ img_on_load(idx,img,json)
  return img;
 }
 function img_on_load(idx,img,json){
