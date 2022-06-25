@@ -2,7 +2,7 @@ function loadDoc( element, url, async=false, then=false ) {
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     element. innerHTML += this.responseText. replaceAll('{index}','/index') ;
+     element. innerHTML += this.responseText. replaceAll('{index}','/homepage') ;
      if ( then != false ) then() ;
     }
   };
