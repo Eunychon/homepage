@@ -25,6 +25,7 @@ function make_subject(idx, name){
  img.setAttribute('class','subject');
  img.setAttribute('alt',name);
  img.src= "{index}/"+idx.path ;
+ a.setAttribute('href','{index}/galleries/?p='+name);
 
  catalog.appendChild(div);
 
@@ -56,6 +57,7 @@ function make(arr){
    arr[i]=make_subject(arr[i],a[2]);
   }else{
    arr[num1-1].appendChild( make_subject2(arr[i],a[2]) );
+   arr[num1-1].previousSibling.removeAttribute( "href" );
   }
  }
 }

@@ -29,6 +29,10 @@ function img2_on_load(img,img2){
 img.appendChild(img2);
 img.addEventListener("mouseenter", function( event ) {mouseenter(event.target);}, false);
 img2.addEventListener("mouseleave", function( event ) {mouseenter(event.target);}, false);
+img.addEventListener("click", function( event ){
+ let src=event.target.getAttribute('src');
+ window.location.href = window.location.href. replace('/galleries/','/pieces/') +'/'+ src.slice(src.lastIndexOf('/'),src.lastIndexOf('-thumb2.gif')) ;
+}, false)
 img2.addEventListener("click", function( event ){
  let src=event.target.getAttribute('src');
  window.location.href = window.location.href. replace('/galleries/','/pieces/') +'/'+ src.slice(src.lastIndexOf('/'),src.lastIndexOf('-thumb2.gif')) ;
