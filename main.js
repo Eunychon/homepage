@@ -1,0 +1,1 @@
+loadNewElement( document.body, "script", "./main/main.js", true ) ;
