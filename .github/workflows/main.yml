@@ -31,6 +31,15 @@ jobs:
       - name: Run python
         run: |
           python dir.py
+          echo github.actor
+          echo github.actor
+          echo github.event.pusher.email
+          echo github.event.pusher.name
+          #git config --global user.name github.actor
+          #git config --global user.email github.event.pusher.email
+          echo aaa > test.txt
+          git add test.txt
+          git commit -m "json add" -a
       - name: Run git diff 
         run: |
           git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
