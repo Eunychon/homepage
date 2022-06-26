@@ -19,7 +19,7 @@ function onload(idx, len, json=0){
   ihtml.width='100%';ihtml.height='100%';
   let w_pctg=100-1*div.style.paddingLeft.slice(0,-1)*2;
   img.style.height=w_pctg*ratio+'vw';
- } else if ( idx==3 ) { // == '.txt'
+ } else if ( format3=='.txt' ) {
   img=document.createElement('div');
   loadDoc(img,url+'/'+url_tail+'.txt');
  } else {
