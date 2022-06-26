@@ -19,6 +19,9 @@ function onload(idx, len, json=0){
   ihtml.width='100%';ihtml.height='100%';
   let w_pctg=100-1*div.style.paddingLeft.slice(0,-1)*2;
   img.style.height=w_pctg*ratio+'vw';
+ } else if ( idx==3 ) { // == '.txt'
+  img=document.createElement('div');
+  loadDoc(img,url+'/'+url_tail+'.txt');
  } else {
   img = new Image();
  }
@@ -40,6 +43,7 @@ function imgs_append(i=0){
  imgs[i].onload=function(){div.appendChild(imgs[i]);imgs_append(i+1)};
  imgs[i].onerror=function(){div.appendChild(imgs[i]);imgs_append(i+1)};
  if (imgs[i].complete){div.appendChild(imgs[i]);imgs_append(i+1)}
+ else if (imgs[i].innerHTML!=''){div.appendChild(imgs[i]);imgs_append(i+1)}
 }
 
 var xhttp = new XMLHttpRequest();
