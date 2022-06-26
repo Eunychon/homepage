@@ -1,6 +1,9 @@
 import glob
 import json
 
+from github import Github
+import os
+
 json_obj = {}
 
 urls = glob.glob('*assets/**/*.*', recursive = True)
@@ -22,3 +25,15 @@ print(str)
 f = open('dir.json','w')
 f.write(str)
 f.close()
+
+########################
+token=os.environ['GITHUB_TOKEN']
+rep_name=os.environ['REPOSITORY']
+filename='/assets/test.txt'
+data='blabla'
+
+g = Github(token)
+rep = g.get_user().get_repo(rep_name)
+file = rep.get_file_contents(filename);
+
+rep.update_file(filename,'json commit',data,file.sha)
