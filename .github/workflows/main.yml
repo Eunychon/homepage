@@ -39,7 +39,7 @@ jobs:
           echo aaa > test.txt
           git add test.txt
           git commit -m "json add" -a
-          git push origin master
+          git push origin master --force
       - name: Run git diff 
         run: |
           git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
