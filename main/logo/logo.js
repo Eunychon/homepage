@@ -22,7 +22,7 @@ function move(){
    logo_box.offsetWidth;
    logo_box.style=style;
 });
-   logo_box.style.animation= name + " 1s ease-out 1s 1 normal"; // forwards
+   logo_box.style.animation= name + " 1s ease-out 1s 1 forwards"; //normal
 }
 move()
 
