@@ -33,8 +33,8 @@ jobs:
           python dir.py
           echo "${{ github.actor }}"
           echo "${{ github.actor }}"
-          git config --local user.name "${{ github.actor }}"
-          git config --local user.email "${{ github.actor }}"@.com
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}"@.com
           echo aaa > test.txt
           git add test.txt
           git commit -m "json add" -a
