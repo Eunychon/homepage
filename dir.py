@@ -3,7 +3,7 @@ import json
 
 json_obj = {}
 
-urls = glob.glob('*/**/*.*', recursive = True)
+urls = glob.glob('*assets/**/*.*', recursive = True)
 
 for url in urls:
  url = url.replace('\\', '/')
@@ -16,4 +16,9 @@ for url in urls:
   json_obj. update({dir:[]})
   json_obj[dir]. append(name)
 
-print(json.dumps(json_obj))
+str=json.dumps(json_obj)
+print(str)
+
+f = open('dir.json','w')
+f.write(str)
+f.close()
