@@ -36,6 +36,7 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}"@gmail.com
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
+          git remote add origin "github.com/${GITHUB_REPOSITORY}.git"
           echo aaa > test.txt
           git add test.txt
           git commit -m "update json"
