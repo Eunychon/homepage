@@ -51,6 +51,7 @@ jobs:
           python dir.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${GITHUB_REPOSITORY}
           
       - name: tree
         run: |
