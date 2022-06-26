@@ -3,6 +3,7 @@ let url = '{index}/assets/' + param;
 let div = document.getElementById('pieces')
 let initial = '';//param[0]
 
+let imgs=[]
 function onload (idx, json=0){
  idx -= 1 ;
  if (idx<=0) return 0;
@@ -17,12 +18,13 @@ function onload (idx, json=0){
  let img = new Image();
  img.src = url+'/'+url_tail;
  //img.onload = function(){img_on_load(idx,img,json)};
- img_on_load(idx,img,json)
+ img_on_load(idx,img,json);
  return img;
 }
 function img_on_load(idx,img,json){
  img.setAttribute('class','gal');
- div.appendChild(img);
+ /*div.appendChild(img);*/
+ /**/imgs.push(img);
 let img2=new Image();
 img2.style=img.style;
 img2.setAttribute('class',img.getAttribute('class'));
@@ -54,6 +56,12 @@ function mouseenter(eold){
  enew.appendChild(eold);
 }
 
+function imgs_append(i=0){
+ if(i>=imgs.length) return;
+ imgs[i].onload=function(){div.appendChild(imgs[i]);imgs_append(i+1)};
+ imgs[i].onerror=function(){div.appendChild(imgs[i]);imgs_append(i+1)};
+ if (imgs[i].complete){div.appendChild(imgs[i]);imgs_append(i+1)}
+}
 //var img0=0;
 function load_img_json(){
   var xhttp = new XMLHttpRequest();
@@ -61,6 +69,7 @@ function load_img_json(){
     if (this.readyState == 4 && this.status == 200) {
      let obj = JSON.parse( this.responseText );
      var img0 = onload( obj.length+1, obj ) ;
+     /**/imgs_append();
      resize(img0);
      window.addEventListener('resize', function(){resize(img0)});
     }

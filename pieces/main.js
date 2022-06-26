@@ -2,6 +2,7 @@ let param = new URL(window.location.href).searchParams.get('p').replace('//','/'
 let url = '{index}/assets/' + param;
 let div = document.getElementById('pieces')
 
+let imgs=[]
 function onload(idx, len, json=0){
  idx += 1 ;
  if(idx>len) return;
@@ -25,18 +26,28 @@ function onload(idx, len, json=0){
  {
   img.style.width="100%";
   img.style.marginBottom="20px";
-  div.appendChild(img);
+  /*div.appendChild(img);*/
+  /**/imgs.push(img)
   onload(idx,len, json);
  };
  img.src = url+'/'+url_tail+format3;//'.jpg';
 }
 //onload(0);
 
+
+function imgs_append(i=0){
+ if(i>=imgs.length) return;
+ imgs[i].onload=function(){div.appendChild(imgs[i]);imgs_append(i+1)};
+ imgs[i].onerror=function(){div.appendChild(imgs[i]);imgs_append(i+1)};
+ if (imgs[i].complete){div.appendChild(imgs[i]);imgs_append(i+1)}
+}
+
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
  if (this.readyState == 4 && this.status == 200) {
   let obj = JSON.parse( this.responseText );
   onload(0, obj.length-2, obj);
+  imgs_append();
 //let ni=get_name(this.responseText);
 //console.log(ni);
 //let length= -1;
