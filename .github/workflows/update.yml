@@ -29,7 +29,9 @@ jobs:
           # Default: 1
           fetch-depth: 2
       - name: Run git diff 
-        run: git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+        run: |
+          git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+          ls -al
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
