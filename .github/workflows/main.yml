@@ -25,23 +25,26 @@ jobs:
           # Number of commits to fetch. 0 indicates all history for all branches and tags.
           # Default: 1
         #  fetch-depth: 2
+          # python dir.py
       - uses: actions/setup-python@v2
         with:
           python-version: 3.7
       - name: Run python
         run: |
-          python dir.py
           echo "${{ github.actor }}"
           echo "${{ github.actor }}"
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}"@gmail.com
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
-          git remote add origin "github.com/${GITHUB_REPOSITORY}.git"
+
           echo aaa > test.txt
-          git add test.txt
+          git remote set-url origin ${{ secrets.ssh }}
+          git status 
+          git add .
           git commit -m "update json"
-          git push -u origin master
-      - name: Run git diff 
+          git fetch origin master
+          git push origin HEAD:master
+      - name: tree
         run: |
           git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
           ls
