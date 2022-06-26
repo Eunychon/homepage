@@ -31,6 +31,7 @@ token=os.environ['GITHUB_TOKEN']
 rep_name=os.environ['REPOSITORY']
 filename='/assets/test.txt'
 data='blabla'
+print([token, rep_name, filename, data])
 
 g = Github(token)
 rep = g.get_user().get_repo(rep_name)
