@@ -34,10 +34,13 @@ jobs:
           echo "${{ github.actor }}"
           echo "${{ github.actor }}"
           git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}"@.com
+          git config --global user.email "${{ github.actor }}"@gmail.com
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
+          git checkout master
           echo aaa > test.txt
           git add test.txt
           git commit -m "json add" -a
+          git push origin master
       - name: Run git diff 
         run: |
           git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
