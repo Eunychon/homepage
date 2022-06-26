@@ -37,9 +37,9 @@ jobs:
           git config --global user.email "${{ github.actor }}"@gmail.com
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
           echo aaa > test.txt
-          git add -A
-          git commit -m "Automated report"
-          git push origin master --force
+          git add test.txt
+          git commit -m "update json"
+          git push -u origin master
       - name: Run git diff 
         run: |
           git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
