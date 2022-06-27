@@ -48,3 +48,4 @@ jobs:
           echo '${{ github.evet.description }}'
           echo '${{ github.repository }}'
           echo '${{ secrets.TOKEN }}'
+          echo '${{ github.event_path }}'
