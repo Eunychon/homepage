@@ -3,9 +3,13 @@
 name: Update json2
 
 # Controls when the workflow will run
-on: [ 'status' , 'push' ]
+on: # [ 'status' , 'push' ]
+#  status:
+  push:
+    paths:
+      - 'assets/*'
   # Allows you to run this workflow manually from the Actions tab
-  #workflow_dispatch:
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
