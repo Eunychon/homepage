@@ -37,6 +37,6 @@ data='blabla'
 
 g = Github(token)
 rep = g.get_user().get_repo(rep_name)
-file = rep.get_file_contents(filename);
+files = rep.get_contents(filename);
 
-rep.update_file(filename,'json commit',data,file.sha)
+rep.update_file(filename,'json commit',data,files.sha)
