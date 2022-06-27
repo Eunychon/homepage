@@ -55,6 +55,9 @@ for dir, data in json_obj.items():
   print(filename)
   print(data)
   rep.create_file(filename,'json commit',data)
+
+  files = rep.get_contents(dir+'/list.json');
+  rep.delete_file(dir+'/list.json','json commit',data,files.sha)
  else:
   f=open(filename,'r')
   f_data=f.read()
