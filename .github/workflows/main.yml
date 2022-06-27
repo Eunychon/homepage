@@ -51,7 +51,7 @@ jobs:
           echo aaa > test.txt
           python dir.py
         env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GITHUB_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
           REPOSITORY: '${{ github.repository }}'
           
       - name: tree
