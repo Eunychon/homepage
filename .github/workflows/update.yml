@@ -4,11 +4,12 @@ name: Update json
 
 # Controls when the workflow will run
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - assets/**
+  status
+#  push:
+#    branches:
+#      - master
+#    paths:
+#      - assets/**
 
   # Allows you to run this workflow manually from the Actions tab
   #workflow_dispatch:
@@ -23,15 +24,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-        with:
+#      - uses: actions/checkout@v3
+#        with:
           # Number of commits to fetch. 0 indicates all history for all branches and tags.
           # Default: 1
-          fetch-depth: 2
-      - name: Run git diff 
-        run: |
-          git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
-          ls -al
+#          fetch-depth: 2
+#      - name: Run git diff 
+#        run: |
+#          git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+#          ls -al
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -41,3 +42,9 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: LS
+          ls
+          echo github.evet.state
+          echo '${{ github.evet.description }}'
+          echo '${{ github.repository }}'
+          echo '${{ secrets.TOKEN }}'
