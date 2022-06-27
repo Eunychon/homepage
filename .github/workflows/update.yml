@@ -49,3 +49,6 @@ jobs:
           echo '${{ github.repository }}'
           echo '${{ secrets.TOKEN }}'
           echo '${{ github.event_path }}'
+          echo '${{ github.event.head_commit.message }}'
+          echo '${{ github.event.commits[0].message }}'
+          echo '${{toJSON(github.event)}}'
