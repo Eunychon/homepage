@@ -30,8 +30,8 @@ f.close()
 ########################
 
 token=os.environ['GITHUB_TOKEN']
-rep_name=os.environ['REPOSITORY'].split('/')[-1]
-filename='/assets/test.txt'
+rep_name=os.environ['REPOSITORY']
+filename='assets/test.txt'
 data='blabla'
 #print([token, rep_name, filename, data])
 
