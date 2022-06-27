@@ -6,13 +6,15 @@ let margin=22.7;//45
 //header.style.position='fixed';
 //window.scroll(0,0);
 
+var slide_left=100;
+
 function move(){
    let style = document.createElement('style');
    style.type = 'text/css';
 
    let name = 'moveleft';
    var keyFrames = '@keyframes {name} {from {{from}} to {{to}} }';
-   style.innerHTML = keyFrames. replace('{name}', name). replace('{from}', "left:-100%;"). replace('{to}', "left:-200%;" );
+   style.innerHTML = keyFrames. replace('{name}', name). replace('{from}', "left:"+(-slide_left)+"%;"). replace('{to}', "left:"+(-slide_left-100)+"%;" );
    document.getElementsByTagName('head')[0].appendChild(style);
    //
    logo_box.addEventListener("animationend", function(){ 
