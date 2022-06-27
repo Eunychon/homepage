@@ -71,6 +71,6 @@ make(obj);
 hidden();
     }
   };
-  xhttp.open("GET", "https://api.github.com/repositories/507168360/contents/assets/product", true);
+  xhttp.open("GET", "{index}/json/assets/product/list.json", true);
   xhttp.send();
 }

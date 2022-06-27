@@ -58,7 +58,7 @@ xhttp.onreadystatechange = function() {
 //onload(0, length-2);
  }
 };
-xhttp.open("GET", "https://api.github.com/repositories/507168360/contents/assets/" + param , true);
+xhttp.open("GET", "{index}/json/assets/" + param + "/list.json" , true);
 xhttp.send();
 
 function get_name(html){

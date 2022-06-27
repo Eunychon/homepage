@@ -74,7 +74,7 @@ function load_img_json(){
      window.addEventListener('resize', function(){resize(img0)});
     }
   };
-  xhttp.open("GET", "https://api.github.com/repositories/507168360/contents/assets/" + param , true);
+  xhttp.open("GET", "{index}/json/assets/" + param + "/list.json", true);
   xhttp.send();
 }
 load_img_json() ;
