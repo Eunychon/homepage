@@ -31,6 +31,7 @@ print(json_obj)
 
 token=os.environ['GITHUB_TOKEN']
 rep_name=os.environ['REPOSITORY'].split('/')[-1]
+event_path=os.environ['EVENT_PATH']
 
 g = Github(token)
 rep = g.get_user().get_repo(rep_name)
@@ -54,10 +55,9 @@ for dir, data in json_obj.items():
   print('create_file')
   print(filename)
   print(data)
-  rep.create_file(filename,'json commit',data)
-
   files = rep.get_contents(dir+'/list.json');
   rep.delete_file(dir+'/list.json','json commit',data,files.sha)
+  #rep.create_file(filename,'json commit',data)
  else:
   f=open(filename,'r')
   f_data=f.read()
