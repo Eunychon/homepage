@@ -7,7 +7,7 @@ from github import Github
 json_obj = {}
 
 root='assets'
-urls = glob.glob('*'+root+'/**/*', recursive = True)
+urls = glob.glob(root+'/**/*', recursive = True)
 
 for url in urls:
  url = url.replace('\\', '/')
