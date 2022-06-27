@@ -14,7 +14,7 @@ for url in urls:
  arr = url.split('/')
  name = arr[-1]
  dir = '/'.join(arr[0:-1])
- data = {"name": name, "path":dir}
+ data = {"name": name, "path":dir+'/'+name}
  try:
   json_obj[dir]. append(data)
  except:
@@ -56,7 +56,7 @@ for dir, data in json_obj.items():
   print(filename)
   print(data)
   files = rep.get_contents(dir+'/list.json');
-  rep.delete_file(dir+'/list.json','json commit',data,files.sha)
+  rep.delete_file(dir+'/list.json','json commit',files.sha)
   #rep.create_file(filename,'json commit',data)
  else:
   f=open(filename,'r')
