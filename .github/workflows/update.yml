@@ -45,6 +45,7 @@ jobs:
         run: |
           ls
           echo github.evet.state
+          git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
           echo '${{ github.evet.description }}'
           echo '${{ github.repository }}'
           echo '${{ secrets.TOKEN }}'
