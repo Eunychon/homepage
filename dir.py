@@ -4,6 +4,13 @@ import json
 import os
 from github import Github
 
+
+f=open('diff_tree.txt','r')
+data=f.read()
+f.close()
+print('updated_file')
+print(data)
+
 json_obj = {}
 
 root='assets'
