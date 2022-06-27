@@ -47,7 +47,8 @@ rep.create_file(filename,'json commit',data)
 """
 
 for dir, data in json_obj.items():
- filename=dir+'/list.json'
+ filename='json/'+dir+'/list.json'
+ data.sort(key = lambda x:x['name'])
  data=json.dumps(data)
  if not os.path.exists(filename):
   print('create_file')
