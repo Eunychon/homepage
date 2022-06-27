@@ -1,12 +1,13 @@
 import glob
 import json
 
-from github import Github
 import os
+from github import Github
 
 json_obj = {}
 
-urls = glob.glob('*assets/**/*.*', recursive = True)
+root='assets'
+urls = glob.glob('*'+root+'/**/*', recursive = True)
 
 for url in urls:
  url = url.replace('\\', '/')
@@ -20,11 +21,12 @@ for url in urls:
   json_obj. update({dir:[]})
   json_obj[dir]. append(data)
 
+json_obj[root]=[]
 """
 str=json.dumps(json_obj)
 print(str)
+print(json_obj)
 """
-
 ########################
 
 token=os.environ['GITHUB_TOKEN']
