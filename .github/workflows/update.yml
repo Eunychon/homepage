@@ -43,6 +43,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: LS
+        run: |
           ls
           echo github.evet.state
           echo '${{ github.evet.description }}'
