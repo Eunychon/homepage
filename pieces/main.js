@@ -4,8 +4,10 @@ let div = document.getElementById('pieces')
 
 let imgs=[]
 function onload(idx, len, json=0){
- idx += 1 ;
- if(idx>len) return;
+ idx += 1 ;/**/
+ if(idx>len) return;/**/
+ //idx -= 1;
+ //if(idx<1) return;
 
  let zero = '00' + idx ;
  let url_tail=param.slice(param. lastIndexOf('/')+1)+'-'+zero.slice(-2);
@@ -25,15 +27,17 @@ function onload(idx, len, json=0){
  } else {
   img = new Image();
  }
- //img.onload = function()
+ //img.onload = function()/**/
  {
   img.style.width="100%";
   img.style.marginBottom="20px";
-  /*div.appendChild(img);*/
-  /**/imgs.push(img)
+  //div.appendChild(img);/**/
+  //img.onload=function(){div.appendChild(img);};
+  /**/imgs.push(img);/**/
+  /**/img.src = url+'/'+url_tail+format3;//'.jpg';/**/
   onload(idx,len, json);
  };
- img.src = url+'/'+url_tail+format3;//'.jpg';
+ //img.src = url+'/'+url_tail+format3;//'.jpg';
 }
 //onload(0);
 
@@ -46,12 +50,29 @@ function imgs_append(i=0){
  else if (imgs[i].innerHTML!=''){div.appendChild(imgs[i]);imgs_append(i+1)}
 }
 
+/*
+function imgData(){
+var request = new XMLHttpRequest();
+        let url = ".jpg";
+        request.open('GET', url);
+        request.responseType = 'blob';
+        request.setRequestHeader('Range', 'bytes=0-'+1024);
+        request.onload = function () {
+            if (request.status === 200) {
+                imgs[].src=window.URL.createObjectURL(request.response);
+            }
+        };
+        request.send();
+}
+*/
+
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
  if (this.readyState == 4 && this.status == 200) {
   let obj = JSON.parse( this.responseText );
-  onload(0, obj.length-2, obj);
-  imgs_append();
+  onload(0, obj.length-2, obj);/**/
+  //onload(obj.length-2+1, obj.length-2, obj);
+  /**/imgs_append();/**/
 //let ni=get_name(this.responseText);
 //console.log(ni);
 //let length= -1;
