@@ -10,15 +10,21 @@ var slide_left=100;
 var imgs=[];
 var max_ratio=0;
 function imgs_append(img){
- let ratio=img.naturalWidth/img.naturalHeight;
- if ( ratio>max_ratio ){
-  max_ratio=ratio;
-  for (let i of imgs){
-   i.style.height=1/max_ratio*100-1+'%';
-  }
- }
- img.style.height=1/max_ratio*100-1+'%';
  imgs.push(img);
+ let interv=setInterval(function () {
+  if (img.naturalWidth) {
+   clearInterval(interv);
+   let ratio=img.naturalWidth/img.naturalHeight;
+   if ( ratio>max_ratio ){
+    max_ratio=ratio;
+    for (let i of imgs){
+     i.style.height=1/max_ratio*100-1+'%';
+    }
+   }
+   img.style.height=1/max_ratio*100-1+'%';
+   console.log(img.naturalWidth, img.naturalHeight);
+  }
+ }, 10);
 }
 
 function move(){
@@ -45,7 +51,7 @@ function new_img(url, cnt){
  let img=new Image();
  img.src = '{index}'+url;
  //img.style.width="98%";
- img.onload=function(){imgs_append(img);};
+ imgs_append(img);
  img.style.height="50%";
  img.style.position= "relative";
  img.style.top= "50%";
@@ -59,7 +65,7 @@ function new_img(url, cnt){
 
 
 let img2=new Image();
-img2.onload=function(){imgs_append(img2)};
+imgs_append(img2);
 img2.style=img.getAttribute('style');
 img2.style.visibility='hidden';
 img2.src=img.getAttribute('src').replace('thumb1','thumb2');
