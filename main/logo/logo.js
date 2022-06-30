@@ -8,21 +8,25 @@ let margin=22.7;//45
 
 var slide_left=100;
 var imgs=[];
+var divs=[];
 var max_ratio=0;
-function imgs_append(img){
- imgs.push(img);
+function imgs_append(img, div){
+ //imgs.push(img);
+ divs.push(div);
  let interv=setInterval(function () {
   if (img.naturalWidth) {
    clearInterval(interv);
    let ratio=img.naturalWidth/img.naturalHeight;
    if ( ratio>max_ratio ){
     max_ratio=ratio;
-    for (let i of imgs){
+    //for (let i of imgs){
+    for (let i of divs){
+     i.style.overflow='hidden';
      i.style.height=1/max_ratio*100-1+'%';
     }
    }
-   img.style.height=1/max_ratio*100-1+'%';
-   console.log(img.naturalWidth, img.naturalHeight);
+   //img.style.height=1/max_ratio*100-1+'%';
+   //console.log(img.naturalWidth, img.naturalHeight);
   }
  }, 10);
 }
@@ -42,6 +46,7 @@ function move(){
    logo_box.removeAttribute('style');
    logo_box.offsetWidth;
    logo_box.style=style;
+//logo_box.style.left="%";
 });
    logo_box.style.animation= name + " 1s ease-out 1s 1 forwards"; //normal
 }
@@ -50,22 +55,28 @@ move()
 function new_img(url, cnt){
  let img=new Image();
  img.src = '{index}'+url;
- //img.style.width="98%";
- imgs_append(img);
+ /**/img.style.width="98%";
+/*
  img.style.height="50%";
  img.style.position= "relative";
  img.style.top= "50%";
  img.style.transform= "translateY(-50%)";
+*/
  let div=document.createElement('div');
+ imgs_append(img, div);
  div.appendChild(img);
- div.style.width=100/cnt+"%";
- div.style.height="100%";
+ /**/div.style.width=100/cnt+"%";/**/
+ //div.style.height="100%";
+ div.style.height="50%";
+ div.style.position= "relative";
+ div.style.top= "50%";
+ div.style.transform= "translateY(-50%)";
  div.style.float="left";
  logo_box.appendChild(div);
 
 
 let img2=new Image();
-imgs_append(img2);
+//imgs_append(img2);
 img2.style=img.getAttribute('style');
 img2.style.visibility='hidden';
 img2.src=img.getAttribute('src').replace('thumb1','thumb2');
