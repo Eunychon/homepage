@@ -7,6 +7,19 @@ let margin=22.7;//45
 //window.scroll(0,0);
 
 var slide_left=100;
+var imgs=[];
+var max_ratio=0;
+function imgs_append(img){
+ let ratio=img.naturalWidth/img.naturalHeight;
+ if ( ratio>max_ratio ){
+  max_ratio=ratio;
+  for (let i of imgs){
+   i.style.height=1/max_ratio*100-1+'%';
+  }
+ }
+ img.style.height=1/max_ratio*100-1+'%';
+ imgs.push(img);
+}
 
 function move(){
    let style = document.createElement('style');
@@ -31,17 +44,22 @@ move()
 function new_img(url, cnt){
  let img=new Image();
  img.src = '{index}'+url;
- img.style.width="98%";
- img.style.heiht="100%";
+ //img.style.width="98%";
+ img.onload=function(){imgs_append(img);};
+ img.style.height="50%";
+ img.style.position= "relative";
+ img.style.top= "50%";
+ img.style.transform= "translateY(-50%)";
  let div=document.createElement('div');
  div.appendChild(img);
  div.style.width=100/cnt+"%";
- div.style.heiht="100%";
+ div.style.height="100%";
  div.style.float="left";
  logo_box.appendChild(div);
 
 
 let img2=new Image();
+img2.onload=function(){imgs_append(img2)};
 img2.style=img.getAttribute('style');
 img2.style.visibility='hidden';
 img2.src=img.getAttribute('src').replace('thumb1','thumb2');
